@@ -30,5 +30,6 @@
 				</tr>
 			@endforeach
 		</table>
+		<h3>Thank you all, this is a test to sync the changes between team </h3>
 	</body>
 </html>
