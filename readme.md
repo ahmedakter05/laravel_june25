@@ -1,3 +1,4 @@
+//////////////////////////////////////////////////////
 This is the recommended and portable method.
 
 📤 On the source machine (export)
@@ -26,6 +27,8 @@ docker cp laravel_backup.sql your_mysql_container:/laravel_backup.sql
 docker exec -i your_mysql_container bash -c \
   "mysql -u laravel -psecret laravel < /laravel_backup.sql"
   
+  
+//////////////////////////////////////////////////////////////////////////////////////////////////  
   
 ✅ 1. Initialize Git in Your Project (on old machine)
 From your Laravel project root (where src/, Dockerfile, and docker-compose.yml are):
@@ -66,3 +69,21 @@ Copy
 Edit
 docker compose up -d --build
 This will re-build your Laravel Docker image from the Dockerfile and bring up all services (app, mysql, phpmyadmin, etc.).
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+set .env with mysql username and password
+
+///////////////////////////////////////////////////////////////
+
+enter to docker container
+docker exec -it laravel_app bash
+composer install
+php artisan config:clear
+php artisan key:generate
+chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+exit
+docker-compose restart
+docker-compose down
+docker-compose up -d
